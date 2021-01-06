@@ -62,6 +62,7 @@ coverage.xml
 .pytest_cache/
 cover/
 .idea/
+.DS_Store
 
 # Translations
 *.mo
