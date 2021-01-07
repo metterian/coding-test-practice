@@ -1,8 +1,8 @@
 #%%
 n, m = 6,4
 graph = [
-[0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0],
+[0, -1, 0, 0, 0, 0],
+[-1, 0, 0, 0, 0, 0],
 [0, 0, 0, 0, 0, 0],
 [0, 0, 0, 0, 0, 1],
 ]
@@ -35,15 +35,16 @@ def bfs(graph, start, visited):
                 if not visited[ny][nx]:
                     visited[ny][nx] = True
                     graph[ny][nx] = 1
-                    zero +=1
                     queue.append([nx, ny, date+1])
-        if  n*m == nonzero + zero:
-            return date
+
+    for row in graph:
+        if 0 in row:
+            return -1
+    return date
 
 
 result = bfs(graph, start, visited)
-if result:
-    print(result+1)
-else:
-    print(0)
+print(result)
+# %%
+
 # %%
