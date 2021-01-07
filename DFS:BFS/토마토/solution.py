@@ -1,8 +1,10 @@
 #%%
-n, m = 2, 2
+n, m = 6,4
 graph = [
-[1, -1],
-[-1, 1],
+[0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 1],
 ]
 visited = [[False] * n for _ in range(m)]
 start = []
@@ -12,12 +14,6 @@ for row in range(m):
             start.append([col, row])
 # %%
 from collections import deque
-
-def is_ripen(graph):
-    for row in graph:
-        if 0 in row:
-            return False
-    return True
 
 
 def bfs(graph, start, visited):
@@ -39,14 +35,15 @@ def bfs(graph, start, visited):
                 if not visited[ny][nx]:
                     visited[ny][nx] = True
                     graph[ny][nx] = 1
+                    zero +=1
                     queue.append([nx, ny, date+1])
-        if is_ripen(graph):
+        if  n*m == nonzero + zero:
             return date
 
 
 result = bfs(graph, start, visited)
-if not result:
-    print(0)
-else:
+if result:
     print(result+1)
+else:
+    print(0)
 # %%
