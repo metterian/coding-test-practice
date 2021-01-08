@@ -10,11 +10,11 @@ s, vx, vy = map(int, input().split())
 
 visited = [[0] * n for _ in range(n) ]
 start = []
-for i in range(1, k+1):
-    for row in range(n):
-        for col in range(n):
-            if i ==  graph[row][col]:
-                start.append([row, col, graph[row][col], 0])
+
+for row in range(n):
+    for col in range(n):
+        if graph[row][col]:
+            start.append([row, col, graph[row][col], 0])
 
 # %%
 from collections import deque
