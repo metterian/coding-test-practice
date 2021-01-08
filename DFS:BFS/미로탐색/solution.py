@@ -1,13 +1,10 @@
 #%%
-n ,m = 7,7
+n ,m = 4,6
 graph = [
-[1,0,1,1,1,1,1],
-[1,1,1,0,0,0,1],
-[1,0,0,0,0,0,1],
-[1,0,0,0,0,0,1],
-[1,0,0,0,0,0,1],
-[1,0,0,0,0,0,1],
-[1,1,1,1,1,1,1],
+[1,1,0,1,1,0],
+[1,1,0,1,1,0],
+[1,1,1,1,1,1],
+[1,1,1,1,0,1],
 ]
 visited = [[False] * m for _ in range(n)]
 # %%
@@ -33,6 +30,8 @@ def dfs(graph, now, visited):
                 dfs(graph, [nx,ny, block+1], visited)
 dfs(graph, [0,0,1], visited)
 # %%
+
+# 최단 시간 소요는 깊이 우선 탐색 보다는 너비 우선 탐색이 적절함
 from collections import deque
 def bfs(graph, start, visited):
     row, col, block = start
@@ -56,4 +55,7 @@ def bfs(graph, start, visited):
             if 0 <= nx < n and 0 <= ny < m and graph[nx][ny]:
                 if not visited[nx][ny]:
                     visited[nx][ny] = True
-                    queue.append(graph, [nx,ny, block+1], visited)
+                    queue.append([nx,ny, block+1])
+bfs(graph, [0,0,1], visited)
+# %%
+# %%
