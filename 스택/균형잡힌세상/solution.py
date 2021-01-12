@@ -12,11 +12,11 @@ strings = [
 
 ]
 
-strings = []
-while True:
-    string = input()
-    if string == '.': break
-    strings.append(string)
+# strings = []
+# while True:
+#     string = input()
+#     if string == '.': break
+#     strings.append(string)
 
 # %%
 def balanced(string):
