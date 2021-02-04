@@ -1,6 +1,5 @@
 
 #%%
-s= 'abcabcabcabcdededededede'
 def compressed(s, step):
     n = len(s)
     compress = [s[start:start+step] for start in range(0, n, step)]
@@ -25,10 +24,7 @@ def compressed(s, step):
 def solution(s):
     n = len(s)
     answer = n
-
     for step in range(1, n-1):
-        # min_len = min(compressed(s,step), n)
         answer = min(answer, compressed(s,step))
     return answer
 print(solution('aabbaccc'))
-# %%
