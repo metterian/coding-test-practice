@@ -29,10 +29,7 @@ def bfs(F,S,G,U,D):
                 visited[down] = True
                 queue.append([down, btn_cnt+1])
 
-    if counts:
-        return counts
-    else:
-        return "use the stairs"
+    return min(counts) if counts else "use the stairs"
 
 print(bfs(F,S,G,U,D))
 
