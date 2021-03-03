@@ -17,27 +17,16 @@ def solution(people, limit):
     left, right = 0, len(people)-1
 
     while left < right:
-        if people[left] + people[right] == limit:
-            people.pop(right)
-            boat.append([people[left], people[right]])
-            right = len(people) - 1
+        two_sum = people[left] + people[right]
+        if two_sum == limit:
+            boat.append([people.pop(left), people.pop(right)])
+        elif two_sum > limit :
             left += 1
-
-        elif people[left] + people[right] > limit:
-            if left + 1 == right:
-                boat.append([people[left], people.pop(right+1)])
-                right = len(people) -1
-
-            else:
-                right -= 1
-
         else:
-            if left + 1 == right:
-                boat.append([left, people(right)])
-                left += 1
-                right = len(people)
-            else:
-                right -=1
+            right -= 1
+
+    print(boat)
+
 
 
 
