@@ -1,39 +1,27 @@
 #%%
 
-people = [70, 50, 80, 50]
+people = [70, 80, 50]
 limit = 100
-
+boat = []
 
 #%%
 
-
 def solution(people, limit):
+    answer = 0
+    people.sort()
 
-    people.sort(reverse=True)
-    boat = []
-
-    cnt = 0
-
-    left, right = 0, len(people)-1
-
-    while left < right:
-        two_sum = people[left] + people[right]
-        if two_sum == limit:
-            boat.append([people.pop(left), people.pop(right)])
-        elif two_sum > limit :
-            left += 1
+    f_cnt =0
+    e_cnt =len(people)-1
+    while e_cnt - f_cnt >=1:
+        if people[f_cnt] +people[e_cnt] <= limit:
+            f_cnt +=1
+            e_cnt -=1
         else:
-            right -= 1
-
-    print(boat)
-
-
-
-
-    # print(boat)
-
-
-    return boat
+            e_cnt -=1
+        answer +=1
+    if e_cnt == f_cnt:
+        answer +=1
+    return answer
 
 solution(people, limit)
 
