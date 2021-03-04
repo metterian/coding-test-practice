@@ -15,7 +15,7 @@ def dfs(visited, graph, start, n, direct):
 
     dx, dy = direct[0]
     nx, ny = x + dx, y + dy
-    if not (0 <= nx < n or 0 <= ny < n) or visited[nx][ny]:
+    if not (0 <= nx < n and 0 <= ny < n) or visited[nx][ny]:
         direct.rotate(-1)
         dx, dy = direct[0]
         nx, ny = x + dx, y + dy
@@ -36,7 +36,14 @@ def solution(n):
         for col in range(row+1, n):
             visited[row][col] = True
     dfs(visited, graph, [0,0], n, direct)
-    return graph
+
+    answer = []
+    for row in range(n):
+        for col in range(n):
+            if graph[row][col]:
+                answer.append(graph[row][col])
+
+    return answer
 
 solution(5)
 

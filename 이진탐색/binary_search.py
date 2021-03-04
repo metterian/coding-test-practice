@@ -1,15 +1,14 @@
-#%%
-def binary_search(A, target, start, end):
-    while start <= end:
-        mid  = (end - start)//2
-        if A[mid] == target:
-            return A[mid]
-        elif target < A[mid]:
-            end = mid -1
+def binarySearch(arr, l, r, x):
+    while l <= r:
+        mid = l + (r - l) // 2;
+        if arr[mid] == x:
+            return True
+        elif arr[mid] < x:
+            l = mid + 1
         else:
-            start = mid +1
-    return None
+            r = mid - 1
 
+    return False
 
 
 
