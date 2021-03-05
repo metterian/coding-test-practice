@@ -12,8 +12,21 @@ def binarySearch(arr, l, r, x):
 
 
 
+def binary_search(arr, target, start, end):
+    while start <= end:
+        mid = start +(end - start)//2
+        if arr[mid] == target:
+            return mid
+        elif target < arr[mid]:
+            end = mid -1
+        else:
+            start = mid + 1
+    return -1
+
+
+
 # %%
-binary_search([1,2,4], 2, 0, 2)
+binarySearch([1,2,4], 2, 0, 2)
 # %%
 def binary_search(A, target, start, end):
     mid = (end - start)//2
