@@ -1,5 +1,5 @@
 #%%
-k, need = 1,1
+k, need = 4, 11
 lines = sorted([int(input()) for _ in range(k)])
 
 # %%
