@@ -10,7 +10,7 @@ visited = [False] * n
 
 def placeQueen(row, col):
     for i in range(col):
-        if x[i] < 0 or abs(row-x[i]) == abs(col-i) or x[i] == row:
+        if abs(row-x[i]) == abs(col-i):
             return False
 
     return True
@@ -23,14 +23,14 @@ def nQueens(col):
 
     for row in range(n):
         # 방문 했으면 다음 행으로 이동
-        if visited[row]:
-            continue
         # 방문 하지 않았으면 행에서 아래 row로 계속 이동
-        x[col] = row
-        if placeQueen(row, col):
-            visited[row] = True
-            nQueens(col+1)
-            visited[row] = False
+        # 즉 이전에 방문했던 row를 방문 하지 않는 것 -> 같은 row에 놓여 있지 못하게 된다.
+        if not visited[row]:
+            x[col] = row
+            if placeQueen(row, col):
+                visited[row] = True
+                nQueens(col+1)
+                visited[row] = False
 
 
 
