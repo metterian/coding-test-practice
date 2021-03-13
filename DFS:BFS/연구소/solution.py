@@ -1,12 +1,12 @@
 #%%
-import sys
-input = sys.stdin.readline
+n,m = 4,6
+graph = [
+[0, 0, 0, 0, 0, 0],
+[1, 0, 0, 0, 0, 2],
+[1, 1, 1, 0, 0, 2],
+[0, 0, 0, 0, 0, 2],
 
-n, m = map(int, input().split())
-graph = []
-for _ in range(n):
-    graph.append(list(map(int, input().split())))
-
+]
 
 # %%
 # Virus Spread Direction
@@ -54,7 +54,7 @@ depth = 0
 zone = 0
 def dfs(graph):
     global depth, zone
-    if depth >= 3:
+    if depth == 3:
         infected = [[False]*m for _ in range(n)]
         virus(infected)
         zone = max(zone, getSafeZone(graph,infected))
@@ -66,13 +66,12 @@ def dfs(graph):
                 graph[r][c] = 1
                 depth += 1
                 # 실행
-                dfs(graph, [r, c])
+                dfs(graph)
 
+                # 복귀
                 graph[r][c] = 0
                 depth -= 1
                 visited[r][c] = False
-
-
 
 
 dfs(graph)
