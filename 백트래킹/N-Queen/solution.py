@@ -4,10 +4,10 @@ n = 8
 x = [-1] * n
 answer = 0
 visited = [False] * n
-
-# x[i] = row값
-# i = col값
-
+"""
+x[i] : Queen의 row값
+i    : col의 인덱스
+"""
 def placeQueen(row, col):
     for i in range(col):
         if abs(row-x[i]) == abs(col-i):

@@ -10,9 +10,9 @@ def calculate(priority, i, expression):
     if priority[i] == '*':
         result = eval("*".join([calculate(priority, i+1, e) for e in expression.split('*')]))
     if priority[i] == '+':
-        result = eval("+".join([calculate(priority, i+1, e) for e in expression.split('*')]))
+        result = eval("+".join([calculate(priority, i+1, e) for e in expression.split('+')]))
     if priority[i] == '-':
-        result = eval("-".join([calculate(priority, i+1, e) for e in expression.split('*')]))
+        result = eval("-".join([calculate(priority, i+1, e) for e in expression.split('-')]))
 
     return str(result)
 
