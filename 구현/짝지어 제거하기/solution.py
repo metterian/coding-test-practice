@@ -1,16 +1,19 @@
 #%%
-s= 'baab'
-
-
+s= 'baabaa'
 
 def solution(s):
-    chars = list(set(s))*3
-    for char in chars:
-        if '' not in s.split(char*2):
-            continue
-        s = "".join(s.split(char*2))
-    return int(len(s) == 0)
-solution(s)
+    stack = []
+    for char in s:
+        if not stack:
+            stack.append(char)
+        elif stack and stack[-1] == char:
+            stack.pop()
+        else:
+            stack.append(char)
+
+    return int(not (stack))
+
+solution
 # %%
 
 # %%
