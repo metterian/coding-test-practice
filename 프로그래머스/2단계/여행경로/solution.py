@@ -44,3 +44,28 @@ def solution(tickets):
 solution(tickets)
 
 # %%
+from collections import defaultdict
+
+
+def dfs(graph, visited, v):
+    visited[v] = True
+    print(v, end=' ')
+    for country in graph:
+        a, b = country
+        if not visited[a]:
+            print(a)
+            dfs(graph, visited, b)
+
+flights = defaultdict(list)
+for src, dst in sorted(tickets, reverse=True):
+    flights[src].append(dst)
+
+
+for i, ticket in enumerate(tickets):
+    tickets[i] = sorted(ticket, reverse=True)
+
+
+
+dfs(tickets, visited, "ICN")
+
+# %%

@@ -1,6 +1,6 @@
 #%%
 answer = 0
-def solution(numbers, target):
+def solution(numbers, target = 0):
     global answer
 
     if sum(numbers) == target:
@@ -15,5 +15,5 @@ def solution(numbers, target):
 
     return answer
 
-solution([1, 1, 1, 1, 1], 3)
-# %%
+solution([8,3,5,7,3,4])
+    # %%

@@ -1,0 +1,66 @@
+#%%
+import math
+n = 5
+graph = [
+    [0,0,1,0,0],
+    [0,1,1,0,1],
+    [0,0,1,0,1],
+    [1,1,1,0,1],
+]
+r = len(graph)
+c = len(graph[0])
+
+visited = [[False] * (r) for _ in range(c)]
+zone = 0
+
+# 동 서 남 북
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
+
+#%%
+from collections import deque
+def set_rain(visited, rain_height):
+    for row in range(n):
+        for col in range(n):
+            if graph[row][col] <= rain_height:
+                visited[row][col] = True
+    return visited
+
+
+def bfs(graph, visited, start):
+    global dx, dy
+
+    x,y = start
+    queue = deque([[x,y]])
+    visited[x][y] = True
+
+    while queue:
+        x, y = queue.popleft()
+        for a,b in zip(dx, dy):
+            nx = x + a
+            ny = y + b
+            if 0 <= nx < n and 0 <= ny < n:
+                if not visited[nx][ny] and graph[nx][ny]:
+                    visited[nx][ny] = True
+                    queue.append([nx, ny])
+
+
+
+def solution(graph, visited, max_height, n):
+    zone = 0
+    for row in range(r):
+        for col in range(c):
+            if graph[row][col] and not visited[row][col]:
+                zone += 1
+                bfs(graph, visited = visited, start=[row,col])
+
+    safe_zone = max(safe_zone, zone)
+
+    return safe_zone
+
+solution(graph, visited, max_height, n)
+if not safe_zone:
+    print(1)
+else:
+    print(safe_zone)
+

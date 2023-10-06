@@ -52,9 +52,6 @@ def solution(p):
 
 
 
-
-
-
 solution('()))((()')
 
 # %%
